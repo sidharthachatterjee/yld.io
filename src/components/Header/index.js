@@ -6,7 +6,9 @@ import styled from 'styled-components'
 import { Padding } from 'styled-components-spacing'
 import logo from '../../images/logo_animated.gif'
 import logoEng from '../../images/eng-logo.svg'
+import logoEngGreen from '../../images/eng-logo-green.svg'
 import logoDesign from '../../images/design-logo.svg'
+import LogoEngComponent from '../../images/eng-logo-component'
 import menu from '../../images/menu.svg'
 import close from '../../images/menu_close.svg'
 import { MobileMenu, HomeLink, Close, DesktopMenu } from './elements.js'
@@ -39,7 +41,7 @@ class Header extends Component {
                     !this.props.blue &&
                     !window.location.pathname.includes('design') ? (
                       <img
-                        role="button"
+                        role="link"
                         tab-index="0"
                         height="48"
                         src={logo}
@@ -47,13 +49,12 @@ class Header extends Component {
                       />
                     ) : null}
 
-                    {(isClient() &&
-                      window.location.pathname.includes('engineering')) ||
-                    this.props.blue ? (
+                    {isClient() &&
+                    window.location.pathname.includes('engineering') ? (
                       <Fragment>
                         <HiddenText>engineering</HiddenText>
                         <img
-                          role="button"
+                          role="link"
                           tab-index="0"
                           height="48"
                           src={logoEng}
@@ -61,12 +62,19 @@ class Header extends Component {
                         />
                       </Fragment>
                     ) : null}
+
+                    {isClient() && this.props.blue ? (
+                      <Fragment>
+                        <HiddenText>engineering</HiddenText>
+                        <LogoEngComponent boxColour="#52FFAC" />
+                      </Fragment>
+                    ) : null}
                     {isClient() &&
                     window.location.pathname.includes('design') ? (
                       <Fragment>
                         <HiddenText>Design</HiddenText>
                         <img
-                          role="button"
+                          role="link"
                           tab-index="0"
                           height="48"
                           src={logoDesign}
