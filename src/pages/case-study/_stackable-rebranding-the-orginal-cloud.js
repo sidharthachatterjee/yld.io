@@ -344,9 +344,7 @@ export const query = graphql`
               url
             }
           }
-          introSentence {
-            introSentence
-          }
+          introSentence
           genericText1 {
             id
             genericText1
